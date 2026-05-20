@@ -1,0 +1,75 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Note {
+  id         String   @id @default(cuid())
+  title      String   @default("")
+  content    String   @default("")
+  type       String   @default("pastel")
+  color      String   @default("#FFF5F5")
+  tags       String   @default("[]")
+  emoji      String?
+  isPinned   Boolean  @default(false)
+  isFavorite Boolean  @default(false)
+  isArchived Boolean  @default(false)
+  posX       Float    @default(0)
+  posY       Float    @default(0)
+  width      Float    @default(240)
+  height     Float    @default(200)
+  zIndex     Int      @default(0)
+  section    String   @default("desk")
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  tasks      Task[]
+  events     Event[]
+}
+
+model Task {
+  id        String    @id @default(cuid())
+  text      String
+  completed Boolean   @default(false)
+  priority  String    @default("medium")
+  noteId    String?
+  note      Note?     @relation(fields: [noteId], references: [id], onDelete: Cascade)
+  dueDate   DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Event {
+  id          String    @id @default(cuid())
+  title       String
+  description String    @default("")
+  date        DateTime
+  endDate     DateTime?
+  color       String    @default("#E8D5F5")
+  isRecurring Boolean   @default(false)
+  recurType   String?
+  noteId      String?
+  note        Note?     @relation(fields: [noteId], references: [id], onDelete: SetNull)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Connection {
+  id         String   @id @default(cuid())
+  fromNoteId String
+  toNoteId   String
+  createdAt  DateTime @default(now())
+}
+
+model ProductivityLog {
+  id             String   @id @default(cuid())
+  date           DateTime @unique
+  tasksCompleted Int      @default(0)
+  tasksTotal     Int      @default(0)
+  streak         Int      @default(0)
+  memeShown      String?
+  createdAt      DateTime @default(now())
+}

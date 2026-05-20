@@ -1,0 +1,279 @@
+@import "tailwindcss";
+
+@theme {
+  /* ━━━ Brand Colors (Obsidian & Rose Premium Theme) ━━━ */
+  --color-iris-cream: #2d2427;
+  --color-iris-beige: #1a1618;
+  --color-iris-pink: #f472b6;
+  --color-iris-pink-soft: #fbcfe8;
+  --color-iris-lavender: #c084fc;
+  --color-iris-lavender-soft: #e9d5ff;
+  --color-iris-blue: #60a5fa;
+  --color-iris-blue-soft: #bfdbfe;
+  --color-iris-mint: #34d399;
+  --color-iris-mint-soft: #a7f3d0;
+  --color-iris-peach: #fb923c;
+  --color-iris-peach-soft: #fed7aa;
+  --color-iris-yellow: #facc15;
+  --color-iris-yellow-soft: #fef08a;
+
+  /* ━━━ Neutrals (Obsidian Mode) ━━━ */
+  --color-iris-white: #18181b;     /* Refined dark surface */
+  --color-iris-offwhite: #121214;  /* Deepest background */
+  --color-iris-gray-50: #18181b;
+  --color-iris-gray-100: #27272a;
+  --color-iris-gray-200: #3f3f46;
+  --color-iris-gray-300: #52525b;
+  --color-iris-gray-400: #71717a;
+  --color-iris-gray-500: #a1a1aa;  /* Muted silver text */
+  --color-iris-gray-600: #d4d4d8;
+  --color-iris-gray-700: #e4e4e7;
+  --color-iris-gray-800: #f4f4f5;  /* Crisp white text */
+  --color-iris-gray-900: #ffffff;
+
+  /* ━━━ Semantic ━━━ */
+  --color-iris-success: #34d399;
+  --color-iris-warning: #fbbf24;
+  --color-iris-error: #f43f5e;
+  --color-iris-info: #38bdf8;
+
+  /* ━━━ Typography ━━━ */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* ━━━ Shadows (Refined Deep Shadows) ━━━ */
+  --shadow-iris-sm: 0 4px 10px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.2);
+  --shadow-iris-md: 0 10px 30px rgba(0, 0, 0, 0.5), 0 4px 10px rgba(0, 0, 0, 0.3);
+  --shadow-iris-lg: 0 20px 40px rgba(0, 0, 0, 0.6), 0 8px 20px rgba(0, 0, 0, 0.4);
+  --shadow-iris-xl: 0 30px 60px rgba(0, 0, 0, 0.8), 0 12px 30px rgba(0, 0, 0, 0.5);
+  --shadow-iris-glow-pink: 0 0 30px rgba(244, 114, 182, 0.15);
+  --shadow-iris-glow-lavender: 0 0 30px rgba(192, 132, 252, 0.15);
+
+  /* ━━━ Radii (Ultra-Round Arc Style) ━━━ */
+  --radius-iris-sm: 12px;
+  --radius-iris-md: 16px;
+  --radius-iris-lg: 24px;
+  --radius-iris-xl: 32px;
+  --radius-iris-full: 9999px;
+
+  /* ━━━ Animations ━━━ */
+  --animate-float: float 8s ease-in-out infinite;
+  --animate-float-slow: float 12s ease-in-out infinite;
+  --animate-float-fast: float 5s ease-in-out infinite;
+  --animate-pulse-soft: pulse-soft 3s ease-in-out infinite;
+  --animate-bounce-in: bounce-in 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  --animate-fade-in: fade-in 0.4s ease-out;
+  --animate-fade-in-up: fade-in-up 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  --animate-scale-in: scale-in 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  --animate-glow: glow 3s ease-in-out infinite alternate;
+}
+
+/* ━━━ Keyframes ━━━ */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes bounce-in {
+  0% { transform: scale(0.9); opacity: 0; }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 10px rgba(244, 114, 182, 0.1); }
+  to { box-shadow: 0 0 30px rgba(244, 114, 182, 0.25); }
+}
+
+/* ━━━ Global Styles ━━━ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-iris-offwhite);
+  color: var(--color-iris-gray-800);
+  min-height: 100vh;
+  overflow-x: hidden;
+  letter-spacing: -0.01em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.025em;
+}
+
+/* ━━━ Scrollbar ━━━ */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-iris-gray-300);
+  border-radius: var(--radius-iris-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-iris-gray-400);
+}
+
+::selection {
+  background: var(--color-iris-pink);
+  color: var(--color-iris-gray-900);
+}
+
+/* ━━━ Premium Glass Utilities ━━━ */
+.glass {
+  background: rgba(24, 24, 27, 0.6);
+  backdrop-filter: blur(40px) saturate(150%);
+  -webkit-backdrop-filter: blur(40px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.glass-strong {
+  background: rgba(24, 24, 27, 0.85);
+  backdrop-filter: blur(60px) saturate(200%);
+  -webkit-backdrop-filter: blur(60px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.glass-subtle {
+  background: rgba(24, 24, 27, 0.3);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* ━━━ Note Style Variants (Refined tactile feel) ━━━ */
+.note-pastel {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), var(--shadow-iris-md);
+  color: var(--color-iris-gray-800);
+}
+
+.note-minimal {
+  background: var(--color-iris-white) !important;
+  border: 1px solid var(--color-iris-gray-200);
+  box-shadow: var(--shadow-iris-md);
+  color: var(--color-iris-gray-800);
+}
+
+.note-glass {
+  background: rgba(24, 24, 27, 0.4) !important;
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), var(--shadow-iris-lg);
+  color: var(--color-iris-gray-800);
+}
+
+.note-neon {
+  background: #000000 !important;
+  color: var(--color-iris-pink);
+  border: 1px solid rgba(244, 114, 182, 0.4);
+  box-shadow: 0 0 20px rgba(244, 114, 182, 0.2), inset 0 0 15px rgba(244, 114, 182, 0.1);
+}
+.note-neon .text-iris-gray-800 {
+  color: var(--color-iris-pink);
+}
+
+.note-focus {
+  background: var(--color-iris-white) !important;
+  border: 2px solid var(--color-iris-pink);
+  box-shadow: var(--shadow-iris-glow-pink);
+  color: var(--color-iris-gray-800);
+}
+
+.note-braindump {
+  background: var(--color-iris-yellow-soft) !important;
+  border: 1px dashed var(--color-iris-gray-400);
+  box-shadow: var(--shadow-iris-md);
+  color: var(--color-iris-gray-800);
+}
+
+.note-doodle {
+  background-color: var(--color-iris-white) !important;
+  border: 2px dashed rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow-iris-md);
+  background-image: linear-gradient(rgba(244, 114, 182, 0.1) 1px, transparent 1px) !important;
+  background-size: 100% 28px !important;
+  color: var(--color-iris-gray-800);
+}
+
+/* ━━━ Rich Text Content ━━━ */
+.note-content {
+  outline: none;
+  line-height: 1.6;
+  font-size: 0.875rem;
+}
+.note-content:empty::before {
+  content: "Start typing...";
+  color: var(--color-iris-gray-400);
+  font-style: italic;
+}
+
+/* ━━━ Calendar Grid ━━━ */
+.calendar-day {
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.calendar-day:hover {
+  background: var(--color-iris-gray-200);
+  transform: scale(1.05);
+}
+.calendar-day.today {
+  background: var(--color-iris-pink-soft);
+  color: #18181b;
+  font-weight: 600;
+  box-shadow: 0 0 15px rgba(244, 114, 182, 0.3);
+}
+.calendar-day.selected {
+  background: var(--color-iris-pink);
+  color: #18181b;
+  font-weight: 600;
+}
+
+/* ━━━ Background Patterns (Refined Obsidian Textures) ━━━ */
+.desk-bg {
+  background-color: var(--color-iris-offwhite);
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+.board-bg {
+  background-color: var(--color-iris-white);
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
