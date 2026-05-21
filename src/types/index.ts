@@ -1,5 +1,5 @@
 // ━━━ Note Types ━━━
-export type NoteType = "pastel" | "minimal" | "glass" | "doodle" | "neon" | "focus" | "braindump";
+export type NoteType = string;
 
 export interface Note {
   id: string;
