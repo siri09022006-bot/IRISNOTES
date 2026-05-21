@@ -17,7 +17,7 @@ export interface Note {
   width: number;
   height: number;
   zIndex: number;
-  section: "desk" | "whiteboard";
+  section: string;
   createdAt: string;
   updatedAt: string;
   tasks?: Task[];
